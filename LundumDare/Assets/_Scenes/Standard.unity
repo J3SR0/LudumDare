@@ -220,6 +220,7 @@ MonoBehaviour:
   speed: 0
   attackSpeed: 0
   jumpHeight: 0
+  isGrounded: 0
 --- !u!1 &728178619
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +268,8 @@ MonoBehaviour:
   v: 0
   mouseX: 0
   mouseY: 0
-  Jump: 0
+  jump: 0
+  fire: 0
 --- !u!1 &936332467
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +416,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 452668, guid: 517a890b6127dd241b07dfc8417b459c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 452668, guid: 517a890b6127dd241b07dfc8417b459c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -459,6 +461,10 @@ Prefab:
     - target: {fileID: 452668, guid: 517a890b6127dd241b07dfc8417b459c, type: 2}
       propertyPath: m_LocalScale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037202, guid: 517a890b6127dd241b07dfc8417b459c, type: 2}
+      propertyPath: m_Mass
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 517a890b6127dd241b07dfc8417b459c, type: 2}

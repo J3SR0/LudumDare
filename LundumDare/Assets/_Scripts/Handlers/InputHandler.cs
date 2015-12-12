@@ -33,9 +33,9 @@ public class InputHandler : MonoBehaviour {
 		}
 
 		if (Input.GetAxis("Fire1") == 0) {
-			jump = false;
+			fire = false;
 		} else {
-			jump = true;
+			fire = true;
 		}
 
 		if (debug)
