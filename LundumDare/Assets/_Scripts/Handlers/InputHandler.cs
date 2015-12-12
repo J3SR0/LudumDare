@@ -3,6 +3,9 @@ using System.Collections;
 
 public class InputHandler : MonoBehaviour {
 
+	//[DEBUG]
+	public bool debug = false;
+
 	//Raw Input
 	public float h = 0;
 	public float v = 0;
@@ -21,9 +24,19 @@ public class InputHandler : MonoBehaviour {
 		v = Input.GetAxis("Vertical");
 		mouseX = Input.GetAxis("Mouse X");
 		mouseY = Input.GetAxis("Mouse Y");
-		Debug.Log("Mouse X = " + mouseX.ToString());
-		Debug.Log("Mouse Y = " + mouseY.ToString());
-		Debug.Log("horizontal = " + h.ToString());
-		Debug.Log("vertical = " + v.ToString());
+		if (debug)
+			customDebug();
+	}
+
+	// Prints values in the Console
+	public void customDebug () {
+		if (mouseX != 0)
+			Debug.Log("Mouse X = " + mouseX.ToString());
+		if (mouseY != 0)
+			Debug.Log("Mouse Y = " + mouseY.ToString());
+		if (h != 0)
+			Debug.Log("horizontal = " + h.ToString());
+		if (v != 0)
+			Debug.Log("vertical = " + v.ToString());
 	}
 }
