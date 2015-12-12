@@ -11,7 +11,8 @@ public class InputHandler : MonoBehaviour {
 	public float v = 0;
 	public float mouseX = 0;
 	public float mouseY = 0;
-	public bool Jump = false;
+	public bool jump = false;
+	public bool fire = false;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,19 @@ public class InputHandler : MonoBehaviour {
 		v = Input.GetAxis("Vertical");
 		mouseX = Input.GetAxis("Mouse X");
 		mouseY = Input.GetAxis("Mouse Y");
+
+		if (Input.GetAxis("Jump") == 0) {
+			jump = false;
+		} else {
+			jump = true;
+		}
+
+		if (Input.GetAxis("Fire1") == 0) {
+			jump = false;
+		} else {
+			jump = true;
+		}
+
 		if (debug)
 			customDebug();
 	}
