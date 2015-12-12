@@ -7,7 +7,7 @@ public class Character : MonoBehaviour {
 	public InputHandler input;
 
 	// Standard Components
-	protected Rigidbody2D rb;
+	protected Rigidbody rb;
 	protected Transform tr;
 	protected Animator an;
 

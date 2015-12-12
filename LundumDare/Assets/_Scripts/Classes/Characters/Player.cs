@@ -9,6 +9,11 @@ public class Player : Character {
 	private bool jump;
 	private float fallSpeed = 1;
 	private float fallMass = 10;
+	private float slideVelocity = 20;
+	private float growthRate = 3;
+	private CollisionDetection collision;
+	private ChangeSize size;
+	private Timer time;
 
 	// Use this for initialization
 	public override void Start () {
@@ -22,37 +27,16 @@ public class Player : Character {
 
 	void FixedUpdate() {
 		Move();
+		Attack();
 		//lockZaxis();
 		applyFall();
-	}
-	public override void Move () {
-		h = this.input.h;
-		jump = this.input.jump;
-
-		flipCharacter();
-		Vector3 movement = new Vector3 (h, 0.0f, 0.0f);
-		if (h < 0) {
-			this.rb.AddForce(movement * this.speed);
-		} else if (h > 0) {
-			this.rb.AddForce(movement * this.speed);
-		}
-
-		if (jump && this.isGrounded) {
-			Vector3 verticalMovement = new Vector3 (0.0f, 10 * this.jumpHeight, 0.0f);
-			this.rb.AddForce(verticalMovement * 4);
-		}
-
-		updateAnimator();
-		groundCheck();
-	}
-
-	public override void Attack () {
-
+		growOverTime();
 	}
 
 	public void Init () {
 		this.tr = GetComponent<Transform>();
 		InitBody();
+		InitTimer();
 		this.speed = 120;
 		this.jumpHeight = 32;
 		this.input = this.transform.parent.parent.GetComponent<InputHandler>();
@@ -64,11 +48,55 @@ public class Player : Character {
 		childTr = gameObject.GetComponentsInChildren<Transform>();
 		foreach (Transform tr in childTr) {
 			if (tr != this.tr) {
-				this.rb = tr.GetComponent<Rigidbody2D>();
+				this.rb = tr.GetComponent<Rigidbody>();
 				this.an = tr.GetComponent<Animator>();
 				this.tr = tr.GetComponent<Transform>();
+				collision = tr.GetComponent<CollisionDetection>();
+				size = tr.GetComponent<ChangeSize>();
 				break ;
 			}
+		}
+	}
+
+	public void InitTimer () {
+		time = tr.parent.parent.parent.GetComponent<Timer>();
+	}
+
+	public override void Move () {
+		h = this.input.h;
+		jump = this.input.jump;
+
+		Vector3 velocity = new Vector3 (0, 0, 0);
+
+		
+		//flipCharacter();
+		//groundCheck();
+		Vector3 movement = new Vector3 (h, 0.0f, 0.0f);
+		if (h < 0 && this.isGrounded) {
+			slide(false);
+			//this.rb.AddForce(movement * this.speed);
+			velocity.x = -slideVelocity;
+			this.rb.velocity = velocity;
+		} else if (h > 0 && this.isGrounded) {
+			slide(false);
+			//this.rb.AddForce(movement * this.speed);
+			velocity.x = slideVelocity;
+			this.rb.velocity = velocity;
+		} else if (h == 0 && this.isGrounded)
+			slide(true);
+
+		if (jump && this.isGrounded) {
+			Vector3 verticalMovement = new Vector3 (0.0f, 10 * this.jumpHeight, 0.0f);
+			this.rb.AddForce(verticalMovement * 4);
+		}
+
+		//updateAnimator();
+	}
+
+	public override void Attack () {
+		fire = this.input.fire;
+		if (fire) {
+			size.grow();
 		}
 	}
 
@@ -94,7 +122,7 @@ public class Player : Character {
 	}
 
 	private void groundCheck() {
-		if (this.rb.velocity.y == 0)
+		if (this.rb.velocity.y == 0 )
 			this.isGrounded = true;
 		else
 			this.isGrounded = false;
@@ -107,7 +135,17 @@ public class Player : Character {
 			vel.y -= fallSpeed;
 			this.rb.velocity = vel;
 		} else {
-			this.rb.mass = 2;
+			this.rb.mass = 0.5f;
+		}
+	}
+
+	private void slide(bool status) {
+		this.rb.isKinematic = status;
+	}
+
+	private void growOverTime() {
+		if (time.time % growthRate == 0) {
+			size.grow();
 		}
 	}
 }
