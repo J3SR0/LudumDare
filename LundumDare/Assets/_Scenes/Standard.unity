@@ -268,6 +268,10 @@ Prefab:
       propertyPath: RightWall
       value: 
       objectReference: {fileID: 209406064}
+    - target: {fileID: 11419436, guid: 64ccac9436ef9451f8d2f95ab7d7bb52, type: 2}
+      propertyPath: Floor
+      value: 
+      objectReference: {fileID: 1396178128}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 64ccac9436ef9451f8d2f95ab7d7bb52, type: 2}
   m_IsPrefabParent: 0

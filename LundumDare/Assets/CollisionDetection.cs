@@ -8,6 +8,7 @@ public class CollisionDetection : MonoBehaviour {
 
 	public Transform LeftWall;
 	public Transform RightWall;
+	public Transform Floor;
 
 	// Use this for initialization
 	void Start () {
@@ -42,6 +43,16 @@ public class CollisionDetection : MonoBehaviour {
 		Bounds wall = RightWall.GetComponent<Renderer>().bounds;
 		Bounds target = tr.GetComponent<Renderer>().bounds;
 		if (target.Intersects(wall)) {
+			//Debug.Log("Youpla");
+			return true;
+		}
+		return false;
+	}
+
+	public bool FCollision() {
+		Bounds floor = Floor.GetComponent<Renderer>().bounds;
+		Bounds target = tr.GetComponent<Renderer>().bounds;
+		if (target.Intersects(floor)) {
 			//Debug.Log("Youpla");
 			return true;
 		}
