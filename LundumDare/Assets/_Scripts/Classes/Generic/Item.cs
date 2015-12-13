@@ -5,9 +5,10 @@ using System;
 public class Item : Utility, IComparable<Item> {
 
 	[SerializeField]
-	private float frequency, timerBeforeDeath, timerBeforeBlink, timerShowBlink, timerHideBlink;
+	private float frequency, timerBeforeDeath, timerBeforeBlink, timerShowBlink, timerShowBlinkReduction, timerHideBlink, timerHideBlinkReduction, timerBlink;
 
 	private GameObject myGameObject;
+	private bool blinking = false;
 
 	public Item(float newFrequency, GameObject newGameObject) {
 		frequency = newFrequency;
@@ -28,8 +29,10 @@ public class Item : Utility, IComparable<Item> {
 
 	public void Update () {
 		float actualTime = Time.time;
-		if (actualTime >= timerBeforeBlink)
-			blink (gameObject, timerShowBlink, timerHideBlink);
+		if (actualTime >= timerBeforeBlink && !blinking) {
+			blink (gameObject, timerShowBlink, timerShowBlinkReduction, timerHideBlink, timerHideBlinkReduction, timerBlink);
+			blinking = true;
+		}
 		if (actualTime >= timerBeforeDeath)
 			Destroy (gameObject);
 	}

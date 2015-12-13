@@ -61,7 +61,10 @@ MonoBehaviour:
   timerBeforeDeath: 10
   timerBeforeBlink: 5
   timerShowBlink: 0.4
+  timerShowBlinkReduction: 0.01
   timerHideBlink: 0.4
+  timerHideBlinkReduction: 0.01
+  timerBlink: 0
 --- !u!135 &13554628
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -146,6 +149,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: timerHideBlink
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timerShowBlinkReduction
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timerHideBlinkReduction
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
