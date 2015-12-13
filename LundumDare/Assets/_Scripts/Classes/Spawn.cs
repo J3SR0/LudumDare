@@ -21,7 +21,6 @@ public class Spawn : MonoBehaviour {
 		nextSpawnTime = spawnTime;
 		GameObject item;
 		Item itemProperties;
-		Debug.Log ("lol");
 		for (int i = 0; i < items.Length; ++i) {
 			item = items [i];
 			itemProperties = item.GetComponent<Item>();
