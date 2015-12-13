@@ -5,44 +5,39 @@ using System;
 public class Item : Utility, IComparable<Item> {
 
 	[SerializeField]
-	private float frequency, deathTimer;
+	private float frequency, timerBeforeDeath, timerBeforeBlink, timerShowBlink, timerHideBlink;
+
 	private GameObject myGameObject;
-
-	private bool blinking = false;
-
-	private Utility test;
 
 	public Item(float newFrequency, GameObject newGameObject) {
 		frequency = newFrequency;
 		myGameObject = newGameObject;
 	}
-
-	public GameObject getGameObject () {
-		return myGameObject;
+		
+	public GameObject MyGameObject{
+		get { return myGameObject; }
 	}
-
-	public float getFrequency () {
-		return frequency;
+	public float Frequency {
+		get { return frequency; }
 	}
 
 	public void Start () {
-		deathTimer += Time.time;
+		timerBeforeBlink += Time.time;
+		timerBeforeDeath += Time.time;
 	}
 
 	public void Update () {
-		if (Time.time + 5 >= deathTimer) {
-			blinking = true;
-//			StartCoroutine (blink ());
-			blink (gameObject, 0.2f, 0.2f);
-		}
-		if (Time.time >= deathTimer)
+		float actualTime = Time.time;
+		if (actualTime >= timerBeforeBlink)
+			blink (gameObject, timerShowBlink, timerHideBlink);
+		if (actualTime >= timerBeforeDeath)
 			Destroy (gameObject);
 	}
-
+		
 	public int CompareTo (Item other) {
 		if (other == null)
 			return 1;
-		else if (frequency < other.getFrequency())
+		else if (frequency < other.Frequency)
 			return -1;
 		else
 			return 1;

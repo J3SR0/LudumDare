@@ -58,7 +58,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frequency: 1
-  deathTimer: 10
+  timerBeforeDeath: 10
+  timerBeforeBlink: 5
+  timerShowBlink: 0.4
+  timerHideBlink: 0.4
 --- !u!135 &13554628
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -127,6 +130,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Constraints
       value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timerBeforeDeath
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timerBeforeBlink
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timerShowBlink
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timerHideBlink
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
