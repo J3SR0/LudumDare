@@ -105,6 +105,11 @@ public class Player : Character {
 
 			this.tr.position = newPos;
 			this.rb.velocity = newVel;
+			if (collision.LWCollision()) {
+				newPos = this.tr.position;
+				newPos.x = -30 + (this.tr.localScale.x / 2);
+				this.tr.position = newPos;
+			}
 		}
 		if (input.dashRight && !Rcol) {
 			Vector3 newPos = this.tr.position;
@@ -114,6 +119,11 @@ public class Player : Character {
 			newVel.x = slideVelocity;
 			this.tr.position = newPos;
 			this.rb.velocity = newVel;
+			if (collision.RWCollision()) {
+				newPos = this.tr.position;
+				newPos.x = 30 - (this.tr.localScale.x / 2);
+				this.tr.position = newPos;
+			}
 		}
 
 	}
