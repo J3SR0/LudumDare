@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21251306}
   - 95: {fileID: 9559652}
   - 114: {fileID: 11453884}
-  - 61: {fileID: 6162100}
+  - 136: {fileID: 13690898}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -26,25 +26,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.11, y: 1, z: 0}
+  m_LocalPosition: {x: 15.9, y: 61.3, z: 0}
   m_LocalScale: {x: 7, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6162100
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170344}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0.010338, y: -0.006194973}
-  serializedVersion: 2
-  m_Size: {x: 0.37893188, y: 1.8518229}
 --- !u!95 &9559652
 Animator:
   serializedVersion: 3
@@ -75,6 +61,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 5
+  liveTime: 5
+  timeBeforeShot: 2
+--- !u!136 &13690898
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.05459218
+  m_Height: 1.8794688
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &21251306
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -3,35 +3,29 @@ using System.Collections;
 
 public class Laser : MonoBehaviour {
 
-	/* SerializeFields*/
 	[SerializeField]
-	private GameObject target; // Target
+	private GameObject target;
 	[SerializeField]
-	private float speed = 5f; // Speed
+	private float speed = 5f;
 	[SerializeField]
-	private float liveTime = 5f; // Live time (s)
+	private float liveTime = 5f;
 	[SerializeField]
-	private float timeBeforeShot = 2f; // Time before shooting (s)
-	/* !SerializeFields */
+	private float timeBeforeShot = 2f;
 
-	/* Vars */
 	private float originalY, y, deathTime, shootingTime;
 	private GameObject lastCollision = null;
-	/* !Vars */
 
-	// Use this for initialization
 	void Start () {
 		originalY = transform.position.y;
 		y = originalY;
 		shootingTime = Time.time + timeBeforeShot;
 		deathTime = Time.time + liveTime;
 	}
-
-	// Update is called once per frame
+		
 	void Update () {
 		if (lastCollision != null) {
 			if (isTouching()) {
-				y = lastCollision.transform.position.y + (lastCollision.GetComponent<Collider2D> ().bounds.size.y / 2f) + (GetComponent<Collider2D> ().bounds.size.y / 2f);
+				y = lastCollision.transform.position.y + (lastCollision.GetComponent<Collider> ().bounds.size.y / 2f) + (GetComponent<Collider> ().bounds.size.y / 2f);
 				transform.position = new Vector2 (transform.position.x, y);
 			}
 			else {
@@ -46,14 +40,15 @@ public class Laser : MonoBehaviour {
 			Shoot ();		
 	}
 
-	void OnCollisionEnter2D(Collision2D collision) {
+	void OnCollisionEnter(Collision collision) {
+		Debug.Log ("Hey");
 		lastCollision = collision.gameObject;
 	}
 
 	private bool isTouching() {
-		float colliderSizeY = GetComponent<Collider2D> ().bounds.size.y / 2f;
-		float lastCollisionColliderSizeY = lastCollision.GetComponent<Collider2D> ().bounds.size.y / 2f;
-		float lastCollisionColliderSizeX = lastCollision.GetComponent<Collider2D> ().bounds.size.x / 2f;
+		float colliderSizeY = GetComponent<Collider> ().bounds.size.y / 2f;
+		float lastCollisionColliderSizeY = lastCollision.GetComponent<Collider> ().bounds.size.y / 2f;
+		float lastCollisionColliderSizeX = lastCollision.GetComponent<Collider> ().bounds.size.x / 2f;
 
 		float impactY = transform.position.y - colliderSizeY - 0.5f;
 		float realImpactY = lastCollision.transform.position.y + lastCollisionColliderSizeY;
