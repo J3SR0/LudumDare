@@ -7,8 +7,10 @@ public class Player : Character {
 	private float v;
 	private bool fire;
 	private bool jump;
+	private bool jumpReady = false;
+
 	private float fallSpeed = 1;
-	private float fallMass = 10;
+	private float fallMass = 15;
 	private float slideVelocity = 20;
 	private float growthRate = 3;
 	private CollisionDetection collision;
@@ -26,10 +28,10 @@ public class Player : Character {
 	}
 
 	void FixedUpdate() {
+		groundCheck();
 		growOverTime();
 		Move();
-		Attack();
-		applyFall();
+		//applyFall();
 	}
 
 	public void Init () {
@@ -67,30 +69,23 @@ public class Player : Character {
 
 		Vector3 velocity = new Vector3 (0, 0, 0);
 
-		
-		//flipCharacter();
-		//groundCheck();
+		slide(false);
+		dashHandler();
+		if (jumpHandler())
+			return;
+
 		Vector3 movement = new Vector3 (h, 0.0f, 0.0f);
 		if (h < 0 && this.isGrounded) {
 			slide(false);
-			//this.rb.AddForce(movement * this.speed);
 			velocity.x = -slideVelocity;
 			this.rb.velocity = velocity;
 		} else if (h > 0 && this.isGrounded) {
 			slide(false);
-			//this.rb.AddForce(movement * this.speed);
 			velocity.x = slideVelocity;
 			this.rb.velocity = velocity;
-		} else if (h == 0 && this.isGrounded)
+		} else if (h == 0 && this.isGrounded) {
 			slide(true);
-
-		if (jump && this.isGrounded) {
-			Vector3 verticalMovement = new Vector3 (0.0f, 10 * this.jumpHeight, 0.0f);
-			this.rb.AddForce(verticalMovement * 4);
 		}
-
-		dashHandler();
-		//updateAnimator();
 	}
 
 	public override void Attack () {
@@ -103,15 +98,33 @@ public class Player : Character {
 
 		if (input.dashLeft && !Lcol) {
 			Vector3 newPos = this.tr.position;
+			Vector3 newVel = this.rb.velocity;
+
 			newPos.x -= 6;
+			newVel.x = -slideVelocity;
+
 			this.tr.position = newPos;
+			this.rb.velocity = newVel;
 		}
 		if (input.dashRight && !Rcol) {
 			Vector3 newPos = this.tr.position;
+			Vector3 newVel = this.rb.velocity;
+
 			newPos.x += 6;
-			this.tr.position = newPos; 
+			newVel.x = slideVelocity;
+			this.tr.position = newPos;
+			this.rb.velocity = newVel;
 		}
 
+	}
+
+	public bool jumpHandler() {
+		if (input.fire && input.fire2 && this.isGrounded) {
+			Vector3 verticalMovement = new Vector3 (0.0f, 10 * this.jumpHeight, 0.0f);
+			this.rb.AddForce(verticalMovement);
+			return true;
+		}		
+		return false;
 	}
 
 	private void updateAnimator() {
@@ -136,14 +149,11 @@ public class Player : Character {
 	}
 
 	private void groundCheck() {
-		if (this.rb.velocity.y == 0 )
-			this.isGrounded = true;
-		else
-			this.isGrounded = false;
+		this.isGrounded = collision.FCollision();
 	}
 
 	private void applyFall() {
-		if (this.rb.velocity.y < 0) {
+		if (!this.isGrounded) {
 			this.rb.mass = fallMass;
 			Vector3 vel = this.rb.velocity;
 			vel.y -= fallSpeed;
