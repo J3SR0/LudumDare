@@ -4,13 +4,26 @@ using System.Collections;
 public class Laser : MonoBehaviour {
 
 	[SerializeField]
-	private GameObject target;
+	private GameObject target = null;
+	public GameObject Target {
+		set {target = value;}
+	}
 	[SerializeField]
 	private float speed = 5f;
 	[SerializeField]
 	private float liveTime = 5f;
 	[SerializeField]
 	private float timeBeforeShot = 2f;
+	[SerializeField]
+	private float frequency;
+	public float Frequency {
+		get { return frequency; }
+	}
+	[SerializeField]
+	private float coolDown;
+	public float CoolDown {
+		get { return coolDown;}
+	}
 
 	private float originalY, y, deathTime, shootingTime;
 	private GameObject lastCollision = null;
@@ -33,7 +46,8 @@ public class Laser : MonoBehaviour {
 				transform.position = new Vector2 (transform.position.x, y);
 			}
 		}
-		transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, y), speed * Time.deltaTime);
+		if (target != null)
+			transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, y), speed * Time.deltaTime);
 		if (Time.time >= deathTime)
 			Destroy (gameObject);
 		else if (Time.time >= shootingTime)
