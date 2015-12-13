@@ -3,16 +3,12 @@ using System.Collections;
 
 public class Utility : MonoBehaviour {
 
-	private bool isBlinking = false;
-
 	///<summary>
 	///This function allow to blink a gameobject.
 	///</summary>
 	public void blink (GameObject gameObjectToBlink = null, float showTime = 1f, float hideTime = 1f, float timer = 0f) {
-		if (gameObjectToBlink != null && !isBlinking) {
+		if (gameObjectToBlink != null)
 			StartCoroutine (blinking (gameObjectToBlink, showTime, hideTime, timer));
-			isBlinking = true;
-		}
 	}
 
 	private IEnumerator blinking (GameObject gameObjectToBlink, float showTime, float hideTime, float timer) {
