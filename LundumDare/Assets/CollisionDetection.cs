@@ -32,7 +32,7 @@ public class CollisionDetection : MonoBehaviour {
 		Bounds wall = LeftWall.GetComponent<Renderer>().bounds;
 		Bounds target = tr.GetComponent<Renderer>().bounds;
 		if (target.Intersects(wall)) {
-			Debug.Log("Youpi");
+			//Debug.Log("Youpi");
 			return true;
 		}
 		return false;
@@ -42,7 +42,7 @@ public class CollisionDetection : MonoBehaviour {
 		Bounds wall = RightWall.GetComponent<Renderer>().bounds;
 		Bounds target = tr.GetComponent<Renderer>().bounds;
 		if (target.Intersects(wall)) {
-			Debug.Log("Youpla");
+			//Debug.Log("Youpla");
 			return true;
 		}
 		return false;

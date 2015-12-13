@@ -26,11 +26,10 @@ public class Player : Character {
 	}
 
 	void FixedUpdate() {
+		growOverTime();
 		Move();
 		Attack();
-		//lockZaxis();
 		applyFall();
-		growOverTime();
 	}
 
 	public void Init () {
@@ -90,14 +89,29 @@ public class Player : Character {
 			this.rb.AddForce(verticalMovement * 4);
 		}
 
+		dashHandler();
 		//updateAnimator();
 	}
 
 	public override void Attack () {
-		fire = this.input.fire;
-		if (fire) {
-			size.grow();
+
+	}
+
+	public void dashHandler () {
+		bool Lcol = collision.LWCollision();
+		bool Rcol = collision.RWCollision();
+
+		if (input.dashLeft && !Lcol) {
+			Vector3 newPos = this.tr.position;
+			newPos.x -= 6;
+			this.tr.position = newPos;
 		}
+		if (input.dashRight && !Rcol) {
+			Vector3 newPos = this.tr.position;
+			newPos.x += 6;
+			this.tr.position = newPos; 
+		}
+
 	}
 
 	private void updateAnimator() {
