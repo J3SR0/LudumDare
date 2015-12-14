@@ -24,7 +24,7 @@ public class Laser : MonoBehaviour {
 
 	[SerializeField]
 	private float coolDownReducer = 0.05f;
-	public float CoolDownReducer { get { return coolDown; } set { coolDown = value; } }
+	public float CoolDownReducer { get { return coolDownReducer; } set { coolDownReducer = value; } }
 
 	public GameObject GameObject { get { return gameObject; } }
 
