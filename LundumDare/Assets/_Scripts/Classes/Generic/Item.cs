@@ -19,12 +19,12 @@ public class Item : Utility, IComparable<Item> {
 	}
 
 	public void Start () {
-		timerBeforeBlink += Time.time;
-		timerBeforeDeath += Time.time;
+		timerBeforeBlink += Time.timeSinceLevelLoad;
+		timerBeforeDeath += Time.timeSinceLevelLoad;
 	}
 
 	public void Update () {
-		float actualTime = Time.time;
+		float actualTime = Time.timeSinceLevelLoad;
 		if (actualTime >= timerBeforeBlink && !blinking)
 			blinking = blink (gameObject, timerShowBlink, timerShowBlinkReduction, timerHideBlink, timerHideBlinkReduction, timerBlink);
 		if (actualTime >= timerBeforeDeath)

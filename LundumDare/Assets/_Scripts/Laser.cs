@@ -28,11 +28,11 @@ public class Laser : MonoBehaviour {
 
 	void Start () {
 		target =  GameObject.Find ("Cube");
-		timerBeforeShot += Time.time;
+		timerBeforeShot += Time.timeSinceLevelLoad;
 	}
 		
 	void Update () {
-		float currentTime = Time.time;
+		float currentTime = Time.timeSinceLevelLoad;
 		if (currentTime >= timerBeforeShot && !shooting)
 			Shoot ();
 		else if (currentTime >= timerBeforeShot + 1f)

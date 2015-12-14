@@ -38,7 +38,7 @@ public class Spawn : MonoBehaviour {
 
 	private void spawn() {
 		float roll = Random.Range (0.01f, 1.0f);
-		if (Time.time >= nextSpawnTime) {
+		if (Time.timeSinceLevelLoad >= nextSpawnTime) {
 			GameObject itemToSpawn = null;
 			float cumulProba = 0;
 			foreach (Item item in listItems) {
@@ -53,9 +53,9 @@ public class Spawn : MonoBehaviour {
 				nextSpawnTime += spawnTime;
 			}
 		}
-		if (laser.GetComponent<Laser> ().Frequency >= roll && Time.time >= nextLaserTime) {
+		if (laser.GetComponent<Laser> ().Frequency >= roll && Time.timeSinceLevelLoad >= nextLaserTime) {
 			spawnGameObject (laser, new Vector2 (getSpawnPositionX (), 16f));
-			nextLaserTime = Time.time + laser.GetComponent<Laser> ().CoolDown;
+			nextLaserTime = Time.timeSinceLevelLoad + laser.GetComponent<Laser> ().CoolDown;
 		}
 	}
 

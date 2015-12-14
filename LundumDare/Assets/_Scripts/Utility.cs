@@ -22,8 +22,8 @@ public class Utility : MonoBehaviour {
 				showTime -= showTimeReduction;
 			}
 		} else {
-			timer += Time.time;
-			while (Time.time < timer) {
+			timer += Time.timeSinceLevelLoad;
+			while (Time.timeSinceLevelLoad < timer) {
 				gameObjectToBlink.GetComponent<Renderer> ().enabled = false;
 				yield return new WaitForSeconds (hideTime);
 				hideTime -= hideTimeReduction;

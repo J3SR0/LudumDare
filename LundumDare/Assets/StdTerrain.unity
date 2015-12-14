@@ -263,6 +263,10 @@ Prefab:
       propertyPath: pickupSound
       value: 
       objectReference: {fileID: 8300000, guid: 0e381c453b03ba84ab37e7cf1e522cc5, type: 3}
+    - target: {fileID: 140400, guid: 64ccac9436ef9451f8d2f95ab7d7bb52, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 64ccac9436ef9451f8d2f95ab7d7bb52, type: 2}
   m_IsPrefabParent: 0
@@ -655,6 +659,7 @@ MonoBehaviour:
   RestartText: {fileID: 0}
   GameOverText: {fileID: 0}
   font: {fileID: 0}
+  font1: {fileID: 0}
 --- !u!1 &1147088161 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 122674, guid: 64ccac9436ef9451f8d2f95ab7d7bb52, type: 2}
