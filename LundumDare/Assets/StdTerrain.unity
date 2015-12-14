@@ -317,7 +317,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3fa6a6e6408eba445b94d649fff6a23a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cf9696876e16145489c6378379613ce6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.16
   m_Pitch: -1.46
@@ -551,13 +551,13 @@ Prefab:
       propertyPath: Floor
       value: 
       objectReference: {fileID: 1540853770}
-    - target: {fileID: 130282, guid: 4eb0f73b81a7b4a72a41a409cc578949, type: 2}
-      propertyPath: m_IsActive
+    - target: {fileID: 8270642, guid: 4eb0f73b81a7b4a72a41a409cc578949, type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8293582, guid: 4eb0f73b81a7b4a72a41a409cc578949, type: 2}
-      propertyPath: m_Volume
-      value: 0.55
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4eb0f73b81a7b4a72a41a409cc578949, type: 2}
