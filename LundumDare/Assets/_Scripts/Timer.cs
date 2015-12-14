@@ -39,7 +39,7 @@ public class Timer : MonoBehaviour {
    	textTime = string.Format ("{0:00}:{1:00}:{2:000}", minutes, seconds, fraction);
         GUIStyle myStyle = new GUIStyle(GUI.skin.GetStyle("label"));
         myStyle.fontSize = 32;
-        myStyle.normal.textColor = Color.black;
+        myStyle.normal.textColor = Color.white;
         GUI.Label (new Rect (Screen.width - 200, 45 , 300, 100), textTime, myStyle); //changed variable name to textTime -->text is not a good variable name since it has other use already
 	}
 }
