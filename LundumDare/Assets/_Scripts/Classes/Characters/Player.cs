@@ -225,13 +225,26 @@ public class Player : Character {
 
 	IEnumerator applySlow() {
 		float savedVelocity = slideVelocity;
-		float slowedSpeed = slideVelocity / 2; 
+		float slowedSpeed = slideVelocity / 2;
 		while (!game.gameOver) {
-			if (slowed)
+			if (slowed) {
 				slideVelocity = slowedSpeed;
+			}
 			else
 				slideVelocity = savedVelocity;
 			yield return null;
+		}
+	}
+
+	void OnGUI () {
+        GUIStyle myStyle = new GUIStyle(GUI.skin.GetStyle("button"));
+        myStyle.fontSize = 32;
+        GUIStyle myLabel = new GUIStyle(GUI.skin.GetStyle("label"));
+        myLabel.fontSize = 32;
+        GUIStyle myStyle1 = new GUIStyle(GUI.skin.GetStyle("button"));
+
+		if (slowed) {
+			GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 20, 200, 50),  "S L O W E D", myStyle);
 		}
 	}
 }
