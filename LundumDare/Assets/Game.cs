@@ -26,7 +26,7 @@ public class Game : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (player.health == 0) {
+		if (player.health <= 0) {
 			if (!gameOver)
 				Score = time.textTime;
 			end();
