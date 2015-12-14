@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour {
 	private float startTime;
 	public float time = 0;
 
-	void Awake () {
+    void Awake () {
 		startTime = Time.time;
 	}
 	// Use this for initialization
@@ -28,15 +28,18 @@ public class Timer : MonoBehaviour {
 
 
    	float guiTime = Time.time - startTime;
+ 
 
 
-
-   	int minutes = (int)guiTime / 60;
+    int minutes = (int)guiTime / 60;
    	int seconds = (int)guiTime % 60;
    	int fraction = (int)(guiTime * 100) % 100;
 
 
-   	textTime = string.Format ("{0:00}:{1:00}:{2:000}", minutes, seconds, fraction); 
-   	GUI.Label (new Rect (400, 25, 100, 30), textTime); //changed variable name to textTime -->text is not a good variable name since it has other use already
+   	textTime = string.Format ("{0:00}:{1:00}:{2:000}", minutes, seconds, fraction);
+        GUIStyle myStyle = new GUIStyle(GUI.skin.GetStyle("label"));
+        myStyle.fontSize = 32;
+        myStyle.normal.textColor = Color.black;
+        GUI.Label (new Rect (Screen.width - 200, 45 , 300, 100), textTime, myStyle); //changed variable name to textTime -->text is not a good variable name since it has other use already
 	}
 }
