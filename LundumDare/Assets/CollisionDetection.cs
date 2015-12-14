@@ -4,7 +4,9 @@ using System.Collections;
 public class CollisionDetection : MonoBehaviour {
 	Rigidbody rb;
 	Transform tr;
+	ChangeSize size;
 	Player playerScript;
+	Vector3 velSave;
 
 	public Transform LeftWall;
 	public Transform RightWall;
@@ -13,19 +15,23 @@ public class CollisionDetection : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		playerScript = this.transform.parent.GetComponent<Player>();
+		size = GetComponent<ChangeSize>();
 		rb = GetComponent<Rigidbody>();
 		tr = GetComponent<Transform>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		LWCollision();
-		RWCollision();
+		velSave = rb.velocity;
 	}
 
 	void OnCollisionEnter(Collision col) {
-		if (col.gameObject.tag == "Floor") {
-			playerScript.isGrounded = true;
+		if (col.gameObject.tag == "Seed") {
+			Destroy(col.gameObject);
+			rb.velocity = velSave;
+			size.shrink();
+		} else if (col.gameObject.tag == "Laser") {
+			playerScript.health -= 1;
 		}
 	}
 
@@ -33,7 +39,6 @@ public class CollisionDetection : MonoBehaviour {
 		Bounds wall = LeftWall.GetComponent<Renderer>().bounds;
 		Bounds target = tr.GetComponent<Renderer>().bounds;
 		if (target.Intersects(wall)) {
-			//Debug.Log("Youpi");
 			return true;
 		}
 		return false;
@@ -43,7 +48,6 @@ public class CollisionDetection : MonoBehaviour {
 		Bounds wall = RightWall.GetComponent<Renderer>().bounds;
 		Bounds target = tr.GetComponent<Renderer>().bounds;
 		if (target.Intersects(wall)) {
-			//Debug.Log("Youpla");
 			return true;
 		}
 		return false;
@@ -53,7 +57,6 @@ public class CollisionDetection : MonoBehaviour {
 		Bounds floor = Floor.GetComponent<Renderer>().bounds;
 		Bounds target = tr.GetComponent<Renderer>().bounds;
 		if (target.Intersects(floor)) {
-			//Debug.Log("Youpla");
 			return true;
 		}
 		return false;

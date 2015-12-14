@@ -12,7 +12,7 @@ public class Player : Character {
 	private float fallSpeed = 1;
 	private float fallMass = 15;
 	private float slideVelocity = 20;
-	private float growthRate = 3;
+	private float growthRate = 5;
 	private CollisionDetection collision;
 	private ChangeSize size;
 	private Timer time;
@@ -38,6 +38,7 @@ public class Player : Character {
 		this.tr = GetComponent<Transform>();
 		InitBody();
 		InitTimer();
+		this.health = 3;
 		this.speed = 120;
 		this.jumpHeight = 32;
 		this.input = this.transform.parent.parent.GetComponent<InputHandler>();
@@ -180,6 +181,8 @@ public class Player : Character {
 	private void growOverTime() {
 		if (time.time % growthRate == 0) {
 			size.grow();
+		} else if ((time.time % (growthRate / 2)) == 0) {
+			//size.blink(this.tr.gameObject, 0.4f, 0.08f, 0.4f, 0.08f, growthRate / 2);
 		}
 	}
 }

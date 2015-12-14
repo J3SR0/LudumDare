@@ -12,7 +12,7 @@ public class Character : MonoBehaviour {
 	protected Animator an;
 
 	// Standard properties
-	public float health;
+	public int health;
 	public float mana;
 	public float speed;
 	public float attackSpeed;

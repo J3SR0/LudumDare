@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ChangeSize : MonoBehaviour {
+public class ChangeSize : Utility {
 	
 	private CollisionDetection collision;
 	private Transform tr;
@@ -32,5 +32,22 @@ public class ChangeSize : MonoBehaviour {
 		}
 		this.tr.position = position;
 		this.tr.localScale = scale;
+	}
+
+	public void shrink() {
+		Vector3 scale = this.tr.localScale;
+		Vector3 position = this.tr.position;
+
+		position.y += 0.5f;
+		scale.x -= 1;
+		scale.y -= 1;
+
+		if (collision.LWCollision()) {
+			position.x += 0.5f;
+		} else if (collision.RWCollision()) {
+			position.x -= 0.5f;
+		}
+		this.tr.position = position;
+		this.tr.localScale = scale;		
 	}
 }

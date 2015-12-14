@@ -70,7 +70,7 @@ public class InputHandler : MonoBehaviour {
 	void dashHandler() {
 		dashLeft = false;
 		dashRight = false;
-		if (Input.GetKeyDown("e")) {
+		if (Input.GetKeyDown("e") || Input.GetMouseButtonDown(0)) {
 			if (leftCD > 0 && leftCount == 1) {
 				//LEFT DASH
 				dashLeft = true;
@@ -80,7 +80,7 @@ public class InputHandler : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKeyDown("r")) {
+		if (Input.GetKeyDown("r") || Input.GetMouseButtonDown(1)) {
 			if (rightCD > 0 && rightCount == 1) {
 				// RIGHT DASH
 				dashRight = true;
