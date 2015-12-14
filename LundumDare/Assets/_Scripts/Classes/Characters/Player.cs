@@ -26,13 +26,14 @@ public class Player : Character {
 	public AudioClip hitSound;
 
 	private string[] debuffPool = new string[2]{"Slow", "Reversed"};
-	private string[] buffPool = new string[3]{"Boost", "Life", "Invincible"};
+	private string[] buffPool = new string[3]{"Boost", "Invincible", "Slim"};
 
 	private bool slowed = false;
 	private bool reversed = false;
 	private bool boosted = false;
+	private bool slimed = false;
 	private bool invincible = false;
-
+	
 	void Awake () {
 		Init();
 	}
@@ -44,6 +45,7 @@ public class Player : Character {
 		StartCoroutine(applySlow());
 		StartCoroutine(applyReversed());
 		StartCoroutine(applyBoost());
+		StartCoroutine(applySlim());
 	}
 	
 	// Update is called once per frame
@@ -243,11 +245,10 @@ public class Player : Character {
 		reversed = false;
 	}
 
-	IEnumerator Life() {
-		if (health < 3) {
-			++health;
-		}
-		yield return null;
+	IEnumerator Slim() {
+		slimed = true;
+		yield return new WaitForSeconds(1);
+		slimed = false;
 	}
 
 	IEnumerator Boost() {
@@ -297,6 +298,18 @@ public class Player : Character {
 		}
 	}
 
+	IEnumerator applySlim() {
+		while (!game.gameOver) {
+			Vector3 scale = tr.localScale;
+			if (slimed) {
+				scale.x = scale.y / 2;
+			}
+			else
+				scale.x = scale.y;
+			tr.localScale = scale;
+			yield return null;
+		}
+	}
 	void OnGUI () {
         GUIStyle myStyle = new GUIStyle(GUI.skin.GetStyle("button"));
         myStyle.fontSize = 32;
@@ -315,6 +328,9 @@ public class Player : Character {
 		}
 		if (invincible && !game.gameOver) {
 			GUI.Button(new Rect(Screen.width / 2 - 150, Screen.height / 2 + 80, 300, 50),  "I N V I N C I B L E", myStyle);
+		}
+		if (slimed && !game.gameOver) {
+			GUI.Button(new Rect(Screen.width / 2 - 150, Screen.height / 2 + 80, 300, 50),  "S L I M", myStyle);
 		}
 	}
 }

@@ -10,7 +10,6 @@ public class ChangeSize : MonoBehaviour {
 	void Awake () {
 		tr = GetComponent<Transform>();
 		collision = GetComponent<CollisionDetection>();
-		Debug.Log("Here");
 	}
 
 	// Use this for initialization

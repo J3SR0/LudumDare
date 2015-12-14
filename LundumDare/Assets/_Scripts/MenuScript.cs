@@ -5,8 +5,10 @@
 /// </summary>
 /// 
 
-public class MenuScript : MonoBehaviour
+public class MenuScript : Utility
 {
+
+	public AudioSource audioSource;
     public Font font;
     void OnGUI()
     {
@@ -24,4 +26,8 @@ public class MenuScript : MonoBehaviour
         if (GUI.Button(new Rect(Screen.width / 2 - (100), (2 * Screen.height / 3) + 50, 200, 50), "Q u i t", myStyle))
             Application.Quit();
     }
+
+	public void Start() {
+		audioSource.volume = soundVolume;
+	}
 }

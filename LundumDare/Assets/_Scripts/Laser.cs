@@ -39,7 +39,7 @@ public class Laser : MonoBehaviour {
 		float currentTime = Time.timeSinceLevelLoad;
 		if (currentTime >= timerBeforeShot && !shooting)
 			Shoot ();
-		else if (currentTime >= timerBeforeShot + 1f)
+		else if (currentTime >= timerBeforeShot + 0.2f)
 			Destroy (gameObject);
 		else if (target != null && !shooting)
 			transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, transform.position.y), speed * Time.deltaTime);
