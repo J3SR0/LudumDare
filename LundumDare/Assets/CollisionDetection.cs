@@ -36,6 +36,7 @@ public class CollisionDetection : Utility {
 
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.tag == "Laser" && !invicibility) {
+			playerScript.health -= 1;
 			blink (gameObject, 0.1f, 0.01f, 0.1f, 0.01f, 1f);
 			invicibility = true;
 			invicibilityTime = Time.time + 1f;

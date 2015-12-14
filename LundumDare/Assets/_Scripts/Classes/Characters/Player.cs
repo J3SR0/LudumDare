@@ -13,6 +13,7 @@ public class Player : Character {
 	private float fallMass = 15;
 	private float slideVelocity = 20;
 	private float growthRate = 1;
+
 	private CollisionDetection collision;
 	private ChangeSize size;
 	private Timer time;

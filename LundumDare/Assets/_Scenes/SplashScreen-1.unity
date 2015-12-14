@@ -440,7 +440,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
   m_Text: "Press X for left \r\nPress double X to dash on the left\r\nPress C for
-    right \r\nPress double C for dash on the right\r\nPress X and C to jump Jump\r\nPress
+    right \r\nPress double C for dash on the right\r\nPress X and C to jump\nPress
     ESCAPE to pause"
 --- !u!222 &579580001
 CanvasRenderer:
@@ -722,7 +722,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: "Stay Small \r\nStay Away to the laser\r\nStay alive - You had 3 life\r"
+  m_Text: "Stay Small \r\nStay Away from the laser\r\nStay alive - You have 3 life\r"
 --- !u!222 &1426757640
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ public class ChangeSize : Utility {
 	
 	private CollisionDetection collision;
 	private Transform tr;
+	private float minSize = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +36,8 @@ public class ChangeSize : Utility {
 	}
 
 	public void shrink() {
+		if (this.tr.localScale.y <= minSize)
+			return ;
 		Vector3 scale = this.tr.localScale;
 		Vector3 position = this.tr.position;
 
