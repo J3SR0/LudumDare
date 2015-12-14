@@ -6,14 +6,18 @@ public class Spawn : MonoBehaviour {
 
 	[SerializeField]
 	private Transform spawnArea;
+
 	[SerializeField]
 	private GameObject[] items;
+
 	[SerializeField]
 	private float spawnTime = 8.0f;
+
 	[SerializeField]
 	private GameObject laser;
 
 	private float nextSpawnTime, nextLaserTime;
+
 	private List<Item> listItems = new List<Item>();
 
 	void Start () {
