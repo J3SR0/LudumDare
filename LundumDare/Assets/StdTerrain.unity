@@ -319,8 +319,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3fa6a6e6408eba445b94d649fff6a23a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.16
+  m_Pitch: -1.46
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -370,12 +370,12 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -551,6 +551,14 @@ Prefab:
       propertyPath: Floor
       value: 
       objectReference: {fileID: 1540853770}
+    - target: {fileID: 130282, guid: 4eb0f73b81a7b4a72a41a409cc578949, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8293582, guid: 4eb0f73b81a7b4a72a41a409cc578949, type: 2}
+      propertyPath: m_Volume
+      value: 0.55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4eb0f73b81a7b4a72a41a409cc578949, type: 2}
   m_IsPrefabParent: 0

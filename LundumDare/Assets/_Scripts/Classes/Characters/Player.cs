@@ -25,7 +25,11 @@ public class Player : Character {
 	public AudioClip dashSound;
 	public AudioClip hitSound;
 
-	private bool slowed;
+	private string[] debuffPool = new string[2]{"Slow", "Reversed"};
+
+	private bool slowed = false;
+	private bool reversed = false;
+	private bool boosted = false;
 
 	void Awake () {
 		Init();
@@ -33,7 +37,10 @@ public class Player : Character {
 
 	// Use this for initialization
 	void Start () {
+		//debuffPool[0] = "Slow";
+		//debuffPool[1] = "Reversed";
 		StartCoroutine(applySlow());
+		StartCoroutine(applyReversed());
 	}
 	
 	// Update is called once per frame
@@ -70,7 +77,6 @@ public class Player : Character {
 				this.an = tr.GetComponent<Animator>();
 				this.tr = tr.GetComponent<Transform>();
 				collision = tr.GetComponent<CollisionDetection>();
-				Debug.Log("HEEERE");
 				size = tr.GetComponent<ChangeSize>();
 				break ;
 			}
@@ -83,8 +89,6 @@ public class Player : Character {
 
 	public override void Move () {
 		h = this.input.h;
-		jump = this.input.jump;
-
 		Vector3 velocity = new Vector3 (0, 0, 0);
 
 		slide(false);
@@ -214,13 +218,31 @@ public class Player : Character {
 	}
 
 	public void debuff () {
-		StartCoroutine(Slow());
+		float rawRoll = Random.Range(0f, 2f);
+		int roll = (int) Mathf.Round(rawRoll);
+		string res = debuffPool[roll];
+		StartCoroutine(res);
 	}
 
 	IEnumerator Slow() {
 		slowed = true;
 		yield return new WaitForSeconds(1);
 		slowed = false;
+	}
+
+	IEnumerator Reversed() {
+		reversed = true;
+		yield return new WaitForSeconds(1);
+		reversed = false;
+	}
+
+	IEnumerator applyReversed() {
+		while (!game.gameOver) {
+			if (reversed) {
+				this.input.h *= -1;
+			}
+			yield return null;
+		}		
 	}
 
 	IEnumerator applySlow() {
@@ -243,8 +265,11 @@ public class Player : Character {
         myLabel.fontSize = 32;
         GUIStyle myStyle1 = new GUIStyle(GUI.skin.GetStyle("button"));
 
-		if (slowed) {
+		if (slowed && !game.gameOver) {
 			GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 20, 200, 50),  "S L O W E D", myStyle);
+		}
+		if (reversed && !game.gameOver) {
+			GUI.Button(new Rect(Screen.width / 2 - 125, Screen.height / 2 + 40, 250, 50),  "R E V E R S E D", myStyle);
 		}
 	}
 }
