@@ -13,54 +13,11 @@ public class MenuScript : MonoBehaviour
         GUIStyle myStyle = new GUIStyle(GUI.skin.GetStyle("button"));
         myStyle.fontSize = 32;
         myStyle.font = font;
-        if (
-          GUI.Button(
-            // Centré en x, 2/3 en y
-            new Rect(
-              Screen.width / 2 - (400 / 2),
-              (2 * Screen.height / 3) - 300,
-              400,
-              100
-            ),
-            "P l a y",
-            myStyle
-          )
-        )
-            // Sur le clic, on démarre le premier niveau
-            // "Stage1" est le nom de la première scène que nous avons créés.
+        if (GUI.Button(new Rect(Screen.width / 2 - (400 / 2), (2 * Screen.height / 3) - 300, 400, 100), "P l a y", myStyle))
             Application.LoadLevel("StdTerrain");
-
-        if (
-            GUI.Button(
-            // Centré en x, 2/3 en y
-            new Rect(
-                Screen.width / 2 - (400 / 2),
-                (2 * Screen.height / 3) - 150,
-                400,
-                100
-                ),
-        "R u l e s",
-        myStyle
-        )
-       )
-            // Sur le clic, on démarre le premier niveau
-            // "Stage1" est le nom de la première scène que nous avons créés.
+        if (GUI.Button(new Rect(Screen.width / 2 - (400 / 2), (2 * Screen.height / 3) - 150, 400, 100), "R u l e s", myStyle))
             Application.LoadLevel("SplashScreen-1");
-        if (
-             GUI.Button(
-             // Centré en x, 2/3 en y
-             new Rect(
-                  Screen.width / 2 - (400 / 2),
-                  (2 * Screen.height / 3) - 0,
-                  400,
-                  100
-                ),
-                "Q u i t",
-                myStyle
-              )
-            )
-        {
+        if (GUI.Button(new Rect(Screen.width / 2 - (400 / 2), (2 * Screen.height / 3) - 0, 400, 100), "Q u i t", myStyle))
             Application.Quit();
-        }
     }
 }
