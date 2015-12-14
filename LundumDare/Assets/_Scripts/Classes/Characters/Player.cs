@@ -199,7 +199,7 @@ public class Player : Character {
 	}
 
 	private void growOverTime() {
-		if (time.time % growthRate == 0) {
+		if (time.time  != 0 && time.time % growthRate == 0) {
 			size.grow();
 		} else if ((time.time % (growthRate / 2)) == 0) {
 			//size.blink(this.tr.gameObject, 0.4f, 0.08f, 0.4f, 0.08f, growthRate / 2);
