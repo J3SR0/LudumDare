@@ -6,12 +6,10 @@ public class Item : Utility, IComparable<Item> {
 
 	[SerializeField]
 	private float frequency, timerBeforeDeath, timerBeforeBlink, timerShowBlink, timerShowBlinkReduction, timerHideBlink, timerHideBlinkReduction, timerBlink;
-	public float Frequency { get; set; }
+	public float Frequency { get{ return frequency;} set{ frequency = value;} }
 
 	private GameObject myGameObject;
-	public GameObject MyGameObject{
-		get { return myGameObject; }
-	}
+	public GameObject MyGameObject{ get { return myGameObject; } }
 
 	private bool blinking = false;
 

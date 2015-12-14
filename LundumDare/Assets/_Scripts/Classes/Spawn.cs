@@ -52,7 +52,7 @@ public class Spawn : MonoBehaviour {
 			}
 		}
 		if (laser.GetComponent<Laser> ().Frequency >= roll && Time.time >= nextLaserTime) {
-			spawnGameObject (laser, new Vector2 (getSpawnPositionX (), -19.7f));
+			spawnGameObject (laser, new Vector2 (getSpawnPositionX (), 16f));
 			nextLaserTime = Time.time + laser.GetComponent<Laser> ().CoolDown;
 		}
 	}
