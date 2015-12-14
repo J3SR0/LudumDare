@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CollisionDetection : MonoBehaviour {
+public class CollisionDetection : Utility {
 	Rigidbody rb;
 	Transform tr;
 	ChangeSize size;
 	Player playerScript;
 	Vector3 velSave;
+
+	private bool invicibility = false;
+	private float invicibilityTime;
 
 	public Transform LeftWall;
 	public Transform RightWall;
@@ -23,14 +26,16 @@ public class CollisionDetection : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		velSave = rb.velocity;
+		if (Time.time >= invicibilityTime)
+			invicibility = false;
 	}
 
 	void OnTriggerEnter(Collider other){
-		if (other.gameObject.tag == "Laser") {
-			Vector3 lPos = other.gameObject.transform.position;
-			lPos.y += 15;
-			other.gameObject.transform.position = lPos;
-			Debug.Log("Laser");
+		if (other.gameObject.tag == "Laser" && !invicibility) {
+			blink (gameObject, 0.1f, 0.01f, 0.1f, 0.01f, 1f);
+			invicibility = true;
+			invicibilityTime = Time.time + 1f;
+			other.gameObject.transform.position = new Vector3 (other.gameObject.transform.position.x, other.gameObject.transform.position.y + GetComponent<Collider> ().bounds.size.y, 0);
 		}
 	}
 

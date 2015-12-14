@@ -23,14 +23,8 @@ public class Spawn : MonoBehaviour {
 	void Start () {
 		nextSpawnTime = spawnTime;
 		nextLaserTime = laser.GetComponent<Laser> ().CoolDown;
-		laser.GetComponent<Laser> ().Target = GameObject.Find ("Cube");
-		GameObject item;
-		Item itemProperties;
-		for (int i = 0; i < items.Length; ++i) {
-			item = items [i];
-			itemProperties = item.GetComponent<Item>();
-			listItems.Add (new Item(itemProperties.Frequency, item));
-		}
+		for (int i = 0; i < items.Length; ++i)
+			listItems.Add (new Item(items [i].GetComponent<Item>().Frequency, items [i]));
 		listItems.Sort ();
 	}
 		
