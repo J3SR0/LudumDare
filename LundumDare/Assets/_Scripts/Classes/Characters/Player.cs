@@ -26,13 +26,13 @@ public class Player : Character {
 	public AudioClip hitSound;
 
 	private string[] debuffPool = new string[2]{"Slow", "Reversed"};
-	private string[] buffPool = new string[3]{"Boost", "Life", "Invincible"};
+	private string[] buffPool = new string[3]{"Boost", "Invincible", "Life"};
 
 	private bool slowed = false;
 	private bool reversed = false;
 	private bool boosted = false;
 	private bool invincible = false;
-
+	private bool displayLife = false;
 	void Awake () {
 		Init();
 	}
@@ -218,7 +218,7 @@ public class Player : Character {
 	}
 
 	public void buff () {
-		float rawRoll = Random.Range(0f, 2f);
+		float rawRoll = Random.Range(0f, 1f);
 		int roll = (int) Mathf.Round(rawRoll);
 		string res = buffPool[roll];
 		StartCoroutine(res);
@@ -244,10 +244,15 @@ public class Player : Character {
 	}
 
 	IEnumerator Life() {
+		float startTime = Time.time;
 		if (health < 3) {
 			++health;
 		}
-		yield return null;
+		while (Time.time - startTime < 0.5f) {
+			displayLife = true;
+			yield return null;
+		}
+		displayLife = false;
 	}
 
 	IEnumerator Boost() {
@@ -315,6 +320,9 @@ public class Player : Character {
 		}
 		if (invincible && !game.gameOver) {
 			GUI.Button(new Rect(Screen.width / 2 - 150, Screen.height / 2 + 80, 300, 50),  "I N V I N C I B L E", myStyle);
+		}
+		if (displayLife && !game.gameOver) {
+			GUI.Button(new Rect(Screen.width / 2 - 150, Screen.height / 2 + 80, 300, 50),  "+ 1 L I F E", myStyle);
 		}
 	}
 }
