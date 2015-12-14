@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Player : Character {
 
+	public Transform[] childTr;
+
 	private float h;
 	private float v;
 	private bool fire;
@@ -23,9 +25,15 @@ public class Player : Character {
 	public AudioClip dashSound;
 	public AudioClip hitSound;
 
-	// Use this for initialization
-	public override void Start () {
+	private bool slowed;
+
+	void Awake () {
 		Init();
+	}
+
+	// Use this for initialization
+	void Start () {
+		StartCoroutine(applySlow());
 	}
 	
 	// Update is called once per frame
@@ -36,7 +44,7 @@ public class Player : Character {
 	void FixedUpdate() {
 		groundCheck();
 		if (!game.gameOver){
-			growOverTime();
+			//growOverTime();
 			Move();
 		}
 		//applyFall();
@@ -55,8 +63,6 @@ public class Player : Character {
 	}
 
 	public void InitBody () {
-		Transform[] childTr;
-
 		childTr = gameObject.GetComponentsInChildren<Transform>();
 		foreach (Transform tr in childTr) {
 			if (tr != this.tr) {
@@ -64,6 +70,7 @@ public class Player : Character {
 				this.an = tr.GetComponent<Animator>();
 				this.tr = tr.GetComponent<Transform>();
 				collision = tr.GetComponent<CollisionDetection>();
+				Debug.Log("HEEERE");
 				size = tr.GetComponent<ChangeSize>();
 				break ;
 			}
@@ -82,10 +89,9 @@ public class Player : Character {
 
 		slide(false);
 		dashHandler();
-		if (jumpHandler())
-			return;
+//		if (jumpHandler())
+//			return;
 
-		Vector3 movement = new Vector3 (h, 0.0f, 0.0f);
 		if (h < 0 && this.isGrounded) {
 			slide(false);
 			velocity.x = -slideVelocity;
@@ -198,11 +204,34 @@ public class Player : Character {
 		this.rb.isKinematic = status;
 	}
 
-	private void growOverTime() {
-		if (time.time  != 0 && time.time % growthRate == 0) {
-			size.grow();
-		} else if ((time.time % (growthRate / 2)) == 0) {
-			//size.blink(this.tr.gameObject, 0.4f, 0.08f, 0.4f, 0.08f, growthRate / 2);
+	public void growOverTime() {
+		size.grow();
+	}
+
+	public void buff () {
+		if (this.health < 3)
+			this.health += 1;
+	}
+
+	public void debuff () {
+		StartCoroutine(Slow());
+	}
+
+	IEnumerator Slow() {
+		slowed = true;
+		yield return new WaitForSeconds(1);
+		slowed = false;
+	}
+
+	IEnumerator applySlow() {
+		float savedVelocity = slideVelocity;
+		float slowedSpeed = slideVelocity / 2; 
+		while (!game.gameOver) {
+			if (slowed)
+				slideVelocity = slowedSpeed;
+			else
+				slideVelocity = savedVelocity;
+			yield return null;
 		}
 	}
 }

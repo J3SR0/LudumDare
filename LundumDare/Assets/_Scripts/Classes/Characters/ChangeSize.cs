@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ChangeSize : Utility {
+public class ChangeSize : MonoBehaviour {
 	
 	private CollisionDetection collision;
 	private Transform tr;

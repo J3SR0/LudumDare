@@ -54,11 +54,13 @@ public class CollisionDetection : Utility {
 			this.audio.PlayOneShot(pickupSound, 1F);
 			Destroy(col.gameObject);
 			rb.velocity = velSave;
+			this.playerScript.buff ();
 			//Debug.Log("Buff");
 		} else if (col.gameObject.tag == "Debuff") {
 			this.audio.PlayOneShot(pickupSound, 1F);
 			Destroy(col.gameObject);
 			rb.velocity = velSave;
+			this.playerScript.debuff ();
 			//Debug.Log("Debuff");
 		}
 	}

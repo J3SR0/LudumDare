@@ -27,7 +27,7 @@ public class Timer : MonoBehaviour {
 	void OnGUI () {
 
 
-   	float guiTime = Time.time - startTime;
+   	float guiTime = time;
  
 
 

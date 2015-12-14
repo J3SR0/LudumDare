@@ -16,19 +16,25 @@ public class Game : MonoBehaviour {
     public Font font;
     public Font font1;
 
+    void Awake () {
+
+    }
+
     // Use this for initialization
     void Start () {
 		gameOver = false;
 		restart = false;
 		time = GetComponent<Timer>();
 		player = GameObject.Find("Player").GetComponent<Player>();
+		StartCoroutine(growOverTime());
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (player.health <= 0) {
-			if (!gameOver)
+			if (!gameOver) {
 				Score = time.textTime;
+			}
 			end();
 		}
 	}
@@ -52,12 +58,20 @@ public class Game : MonoBehaviour {
 
             if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 40, 200, 50), "R e s t a r t", myStyle1))
             {
-                Application.LoadLevel("StdTerrain");
+            	//player.childTr.Clear();
+                Application.LoadLevel(Application.loadedLevel);
             }
             if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 20, 200, 50), "M e n u", myStyle1))
             {
                 Application.LoadLevel("menu");
             }
         }
+	}
+
+	IEnumerator growOverTime() {
+		while (!gameOver) {
+			player.growOverTime();
+			yield return new WaitForSeconds(1);
+		}
 	}
 }
