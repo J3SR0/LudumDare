@@ -15,12 +15,16 @@ public class CollisionDetection : Utility {
 	public Transform RightWall;
 	public Transform Floor;
 
+	private AudioSource audio;
+	public AudioClip pickupSound;
+
 	// Use this for initialization
 	void Start () {
 		playerScript = this.transform.parent.GetComponent<Player>();
 		size = GetComponent<ChangeSize>();
 		rb = GetComponent<Rigidbody>();
 		tr = GetComponent<Transform>();
+		this.audio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -36,19 +40,23 @@ public class CollisionDetection : Utility {
 			invicibility = true;
 			invicibilityTime = Time.time + 1f;
 			other.gameObject.transform.position = new Vector3 (other.gameObject.transform.position.x, other.gameObject.transform.position.y + GetComponent<Collider> ().bounds.size.y, 0);
+			this.playerScript.hit ();
 		}
 	}
 
 	void OnCollisionEnter(Collision col) {
 		if (col.gameObject.tag == "Seed") {
+			this.audio.PlayOneShot(pickupSound, 1F);
 			Destroy(col.gameObject);
 			rb.velocity = velSave;
 			size.shrink();
 		} else if (col.gameObject.tag == "Buff") {
+			this.audio.PlayOneShot(pickupSound, 1F);
 			Destroy(col.gameObject);
 			rb.velocity = velSave;
 			//Debug.Log("Buff");
 		} else if (col.gameObject.tag == "Debuff") {
+			this.audio.PlayOneShot(pickupSound, 1F);
 			Destroy(col.gameObject);
 			rb.velocity = velSave;
 			//Debug.Log("Debuff");

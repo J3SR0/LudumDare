@@ -18,6 +18,10 @@ public class Player : Character {
 	private Timer time;
 	private Game game;
 
+	private AudioSource audio;
+	public AudioClip dashSound;
+	public AudioClip hitSound;
+
 	// Use this for initialization
 	public override void Start () {
 		Init();
@@ -46,6 +50,7 @@ public class Player : Character {
 		this.jumpHeight = 32;
 		this.input = this.transform.parent.parent.GetComponent<InputHandler>();
 		this.game = this.transform.parent.parent.GetComponent<Game>();
+		this.audio = GetComponent<AudioSource>();
 	}
 
 	public void InitBody () {
@@ -102,6 +107,7 @@ public class Player : Character {
 		bool Rcol = collision.RWCollision();
 
 		if (input.dashLeft && !Lcol) {
+			this.audio.PlayOneShot(dashSound, 1F);
 			Vector3 newPos = this.tr.position;
 			Vector3 newVel = this.rb.velocity;
 
@@ -117,6 +123,7 @@ public class Player : Character {
 			}
 		}
 		if (input.dashRight && !Rcol) {
+			this.audio.PlayOneShot(dashSound, 1F);
 			Vector3 newPos = this.tr.position;
 			Vector3 newVel = this.rb.velocity;
 
@@ -179,6 +186,11 @@ public class Player : Character {
 		} else {
 			this.rb.mass = 0.5f;
 		}
+	}
+
+	public void hit() {
+		this.health -= 1;
+		this.audio.PlayOneShot(hitSound, 1F);
 	}
 
 	private void slide(bool status) {
