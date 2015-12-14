@@ -313,7 +313,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 730351856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46, y: 20, z: 0}
+  m_LocalPosition: {x: -30, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1646997603}
@@ -332,7 +332,7 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
   - {x: 0.011077881, y: 0}
-  - {x: 91.999306, y: -0.014913559}
+  - {x: 59.564415, y: -0.012893677}
 --- !u!1 &1120987846
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +344,7 @@ GameObject:
   - 114: {fileID: 1120987848}
   - 114: {fileID: 1120987847}
   - 114: {fileID: 1120987850}
+  - 114: {fileID: 1120987851}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -415,7 +416,22 @@ MonoBehaviour:
   spawnArea: {fileID: 730351857}
   items:
   - {fileID: 163870, guid: 3b08055fa7e66f34495568fe15512a32, type: 2}
-  spawnTime: 4
+  - {fileID: 101544, guid: b60f2bf261cbc134eb4fc3d40d9ffe91, type: 2}
+  - {fileID: 197028, guid: b63a259eb7465e842bf752df44e5ca1c, type: 2}
+  spawnTime: 1
+  laser: {fileID: 170344, guid: 86b83a0cc38f6b44c98891ecee3bf103, type: 2}
+--- !u!114 &1120987851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120987846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317e99dfdc2494af58c89d9a06021874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Score: 0
 --- !u!1 &1454938838
 GameObject:
   m_ObjectHideFlags: 0

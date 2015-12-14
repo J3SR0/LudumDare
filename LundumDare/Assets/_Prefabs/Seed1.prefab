@@ -9,12 +9,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 466400}
   - 212: {fileID: 21289090}
-  - 58: {fileID: 5874550}
-  - 50: {fileID: 5013476}
+  - 54: {fileID: 5451938}
   - 114: {fileID: 11459364}
+  - 135: {fileID: 13511650}
   m_Layer: 0
   m_Name: Seed1
-  m_TagString: Untagged
+  m_TagString: Debuff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,37 +31,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!50 &5013476
-Rigidbody2D:
-  serializedVersion: 2
+--- !u!54 &5451938
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101544}
-  m_UseAutoMass: 0
+  serializedVersion: 2
   m_Mass: 1
-  m_LinearDrag: 0
+  m_Drag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_Constraints: 56
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &5874550
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101544}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.3
 --- !u!114 &11459364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,7 +57,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215a5d6fd568dfb4fb7b525ca0168d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequency: 0.02
+  frequency: 0.33
+  timerBeforeDeath: 10
+  timerBeforeBlink: 5
+  timerShowBlink: 0.4
+  timerShowBlinkReduction: 0.04
+  timerHideBlink: 0.4
+  timerHideBlinkReduction: 0.04
+  timerBlink: 0
+--- !u!135 &13511650
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.32
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &21289090
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -110,7 +113,43 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Debuff
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: frequency
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timerBeforeDeath
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timerBeforeBlink
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timerShowBlink
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timerShowBlinkReduction
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timerHideBlink
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timerHideBlinkReduction
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 56
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 101544}

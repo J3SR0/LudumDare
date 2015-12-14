@@ -93,6 +93,10 @@ Material:
         second: 0.5
       data:
         first:
+          name: PixelSnap
+        second: 0
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -135,4 +139,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0, g: 0.46206903, b: 1, a: 1}
+        second: {r: 1, g: 0.472, b: 0, a: 1}
