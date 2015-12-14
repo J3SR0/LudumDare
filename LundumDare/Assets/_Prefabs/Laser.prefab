@@ -77,17 +77,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 5
-<<<<<<< Updated upstream
-  liveTime: 5
-  timeBeforeShot: 2
-  frequency: 0.02
-  coolDown: 10
-=======
   liveTime: 2
   timeBeforeShot: 2
   frequency: 0.02
   coolDown: 1
->>>>>>> Stashed changes
 --- !u!136 &13690898
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -144,11 +137,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: liveTime
-<<<<<<< Updated upstream
-      value: 5
-=======
       value: 2
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: frequency
@@ -156,15 +145,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: coolDown
-<<<<<<< Updated upstream
-      value: 10
-=======
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Laser
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
