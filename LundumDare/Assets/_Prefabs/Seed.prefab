@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215a5d6fd568dfb4fb7b525ca0168d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequency: 0.33
+  frequency: 0.7
   timerBeforeDeath: 10
   timerBeforeBlink: 5
   timerShowBlink: 0.4
@@ -120,7 +120,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: frequency
-      value: 0.33
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: deathTimer

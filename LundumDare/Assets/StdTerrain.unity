@@ -245,10 +245,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1120987849}
   m_RootOrder: 1
---- !u!4 &676219390 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 495394, guid: 4eb0f73b81a7b4a72a41a409cc578949, type: 2}
-  m_PrefabInternal: {fileID: 1269256592}
 --- !u!1 &730351856
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +456,7 @@ Transform:
   - {fileID: 45762579}
   - {fileID: 273026812}
   - {fileID: 1646997603}
-  - {fileID: 676219390}
+  - {fileID: 1269256593}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!114 &1120987850
@@ -560,9 +556,25 @@ Prefab:
       propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11431920, guid: 4eb0f73b81a7b4a72a41a409cc578949, type: 2}
+      propertyPath: LeftWall
+      value: 
+      objectReference: {fileID: 1457565926}
+    - target: {fileID: 11431920, guid: 4eb0f73b81a7b4a72a41a409cc578949, type: 2}
+      propertyPath: RightWall
+      value: 
+      objectReference: {fileID: 1454938842}
+    - target: {fileID: 11431920, guid: 4eb0f73b81a7b4a72a41a409cc578949, type: 2}
+      propertyPath: Floor
+      value: 
+      objectReference: {fileID: 1540853770}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4eb0f73b81a7b4a72a41a409cc578949, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1269256593 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 447054, guid: 4eb0f73b81a7b4a72a41a409cc578949, type: 2}
+  m_PrefabInternal: {fileID: 1269256592}
 --- !u!1 &1454938838
 GameObject:
   m_ObjectHideFlags: 0

@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc74bcfa5cf34f4d9401c9f0e275740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 409588970}
   font: {fileID: 12800000, guid: 15911aeaaaa4ea248ac861135381e43a, type: 3}
 --- !u!1 &409588969
 GameObject:
@@ -209,7 +210,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cf9696876e16145489c6378379613ce6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3fa6a6e6408eba445b94d649fff6a23a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -262,7 +263,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
