@@ -37,6 +37,10 @@ public class CollisionDetection : Utility {
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.tag == "Laser" && !invicibility) {
 			blink (gameObject, 0.1f, 0.01f, 0.1f, 0.01f, 1f);
+			foreach (Transform firstLevel in gameObject.GetComponentsInChildren<Transform>()) {
+				if (firstLevel.gameObject.name != "Life" && firstLevel.gameObject.name != "Shield")
+					blink (firstLevel.gameObject, 0.1f, 0.01f, 0.1f, 0.01f, 1f);
+			}
 			invicibility = true;
 			invicibilityTime = Time.time + 1f;
 			other.gameObject.transform.position = new Vector3 (other.gameObject.transform.position.x, other.gameObject.transform.position.y + GetComponent<Collider> ().bounds.size.y, 0);
