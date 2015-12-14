@@ -11,17 +11,17 @@ public class MenuScript : MonoBehaviour
     void OnGUI()
     {
         GUIStyle myStyle = new GUIStyle(GUI.skin.GetStyle("button"));
-        myStyle.fontSize = 32;
+        myStyle.fontSize = 28;
         myStyle.font = font;
         GUIStyle myStyle1 = new GUIStyle(GUI.skin.GetStyle("label"));
-        myStyle1.fontSize = 40;
+        myStyle1.fontSize = 32;
         myStyle1.font = font;
-        GUI.Label(new Rect(Screen.width / 2 - (500 / 2), (2 * Screen.height / 3) - 500, 500, 100), "D A S H M A G E D D O N", myStyle1);
-        if (GUI.Button(new Rect(Screen.width / 2 - (400 / 2), (2 * Screen.height / 3) - 300, 400, 100), "P l a y", myStyle))
+        GUI.Label(new Rect(Screen.width / 2 - (200), (2 * Screen.height / 3) - 300, 500, 100), "D A S H M A G E D D O N", myStyle1);
+        if (GUI.Button(new Rect(Screen.width / 2 - (100), (2 * Screen.height / 3) - 150, 200, 50), "P l a y", myStyle))
             Application.LoadLevel("StdTerrain");
-        if (GUI.Button(new Rect(Screen.width / 2 - (400 / 2), (2 * Screen.height / 3) - 150, 400, 100), "R u l e s", myStyle))
+        if (GUI.Button(new Rect(Screen.width / 2 - (100), (2 * Screen.height / 3) -50, 200, 50), "R u l e s", myStyle))
             Application.LoadLevel("SplashScreen-1");
-        if (GUI.Button(new Rect(Screen.width / 2 - (400 / 2), (2 * Screen.height / 3) - 0, 400, 100), "Q u i t", myStyle))
+        if (GUI.Button(new Rect(Screen.width / 2 - (100), (2 * Screen.height / 3) + 50, 200, 50), "Q u i t", myStyle))
             Application.Quit();
     }
 }
