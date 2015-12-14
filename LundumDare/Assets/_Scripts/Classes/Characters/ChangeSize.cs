@@ -38,7 +38,7 @@ public class ChangeSize : Utility {
 		Vector3 scale = this.tr.localScale;
 		Vector3 position = this.tr.position;
 
-		position.y += 0.5f;
+		position.y -= 0.5f;
 		scale.x -= 1;
 		scale.y -= 1;
 

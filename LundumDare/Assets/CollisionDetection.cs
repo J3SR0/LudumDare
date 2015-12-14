@@ -25,13 +25,28 @@ public class CollisionDetection : MonoBehaviour {
 		velSave = rb.velocity;
 	}
 
+	void OnTriggerEnter(Collider other){
+		if (other.gameObject.tag == "Laser") {
+			Vector3 lPos = other.gameObject.transform.position;
+			lPos.y += 15;
+			other.gameObject.transform.position = lPos;
+			Debug.Log("Laser");
+		}
+	}
+
 	void OnCollisionEnter(Collision col) {
 		if (col.gameObject.tag == "Seed") {
 			Destroy(col.gameObject);
 			rb.velocity = velSave;
 			size.shrink();
-		} else if (col.gameObject.tag == "Laser") {
-			playerScript.health -= 1;
+		} else if (col.gameObject.tag == "Buff") {
+			Destroy(col.gameObject);
+			rb.velocity = velSave;
+			//Debug.Log("Buff");
+		} else if (col.gameObject.tag == "Debuff") {
+			Destroy(col.gameObject);
+			rb.velocity = velSave;
+			//Debug.Log("Debuff");
 		}
 	}
 

@@ -62,8 +62,8 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 5
   timerBeforeShot: 2
-  frequency: 0.02
-  coolDown: 10
+  frequency: 0.2
+  coolDown: 5
 --- !u!136 &13628126
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -113,7 +113,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: frequency
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: coolDown
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100940}

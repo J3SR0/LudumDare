@@ -226,6 +226,14 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5476596, guid: 64ccac9436ef9451f8d2f95ab7d7bb52, type: 2}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476596, guid: 64ccac9436ef9451f8d2f95ab7d7bb52, type: 2}
+      propertyPath: m_AngularDrag
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 64ccac9436ef9451f8d2f95ab7d7bb52, type: 2}
   m_IsPrefabParent: 0
@@ -419,7 +427,7 @@ MonoBehaviour:
   - {fileID: 101544, guid: b60f2bf261cbc134eb4fc3d40d9ffe91, type: 2}
   - {fileID: 197028, guid: b63a259eb7465e842bf752df44e5ca1c, type: 2}
   spawnTime: 1
-  laser: {fileID: 170344, guid: 86b83a0cc38f6b44c98891ecee3bf103, type: 2}
+  laser: {fileID: 100940, guid: 86b83a0cc38f6b44c98891ecee3bf103, type: 2}
 --- !u!114 &1120987851
 MonoBehaviour:
   m_ObjectHideFlags: 0

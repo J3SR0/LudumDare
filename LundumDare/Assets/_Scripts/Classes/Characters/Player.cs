@@ -131,8 +131,11 @@ public class Player : Character {
 
 	public bool jumpHandler() {
 		if (input.fire && input.fire2 && this.isGrounded) {
-			Vector3 verticalMovement = new Vector3 (0.0f, 10 * this.jumpHeight, 0.0f);
-			this.rb.AddForce(verticalMovement);
+			Vector3 vel = this.rb.velocity;
+			vel.y += this.jumpHeight / 10;
+			this.rb.velocity = vel;
+			//Vector3 verticalMovement = new Vector3 (0.0f, 10 * this.jumpHeight, 0.0f);
+			//this.rb.AddForce(verticalMovement);
 			return true;
 		}		
 		return false;
