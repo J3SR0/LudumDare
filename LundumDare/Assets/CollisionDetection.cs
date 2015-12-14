@@ -33,7 +33,7 @@ public class CollisionDetection : Utility {
 	// Update is called once per frame
 	void Update () {
 		velSave = rb.velocity;
-		if (Time.time >= invicibilityTime)
+		if (Time.timeSinceLevelLoad >= invicibilityTime)
 			invicibility = false;
 	}
 
@@ -45,7 +45,7 @@ public class CollisionDetection : Utility {
 					blink (firstLevel.gameObject, 0.1f, 0.01f, 0.1f, 0.01f, 1f);
 			}
 			invicibility = true;
-			invicibilityTime = Time.time + 1f;
+			invicibilityTime = Time.timeSinceLevelLoad + 1f;
 			other.gameObject.transform.position = new Vector3 (other.gameObject.transform.position.x, other.gameObject.transform.position.y + GetComponent<Collider> ().bounds.size.y, 0);
 			this.playerScript.hit ();
 		}
