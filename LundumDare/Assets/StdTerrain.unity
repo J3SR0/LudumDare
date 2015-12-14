@@ -97,6 +97,7 @@ GameObject:
   - 92: {fileID: 45762577}
   - 124: {fileID: 45762576}
   - 81: {fileID: 45762575}
+  - 114: {fileID: 45762580}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -171,6 +172,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1120987849}
   m_RootOrder: 0
+--- !u!114 &45762580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 45762574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec96bc27e88c86c4481756cbaa4a0a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  font: {fileID: 12800000, guid: 15911aeaaaa4ea248ac861135381e43a, type: 3}
 --- !u!1001 &202645279
 Prefab:
   m_ObjectHideFlags: 0
@@ -292,8 +305,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 273026810}
-  m_LocalRotation: {x: 0.40821794, y: -0.23456973, z: 0.109381676, w: 0.87542605}
-  m_LocalPosition: {x: -2.9091437, y: -0.12648422, z: 0}
+  m_LocalRotation: {x: 0.40700206, y: -0.22931345, z: 0.10308283, w: 0.878145}
+  m_LocalPosition: {x: 0, y: 0, z: 45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1120987849}
@@ -439,6 +452,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317e99dfdc2494af58c89d9a06021874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: 0
+  restart: 0
   Score: 0
 --- !u!1 &1454938838
 GameObject:
@@ -740,7 +755,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 00efd25ec6e05a240982797cf3671d62, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.88235295, g: 0.25490198, b: 0.25490198, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!4 &1870232432

@@ -28,7 +28,7 @@ public class MenuScript : MonoBehaviour
         )
             // Sur le clic, on démarre le premier niveau
             // "Stage1" est le nom de la première scène que nous avons créés.
-            Application.LoadLevel("Standard");
+            Application.LoadLevel("StdTerrain");
 
         if (
             GUI.Button(

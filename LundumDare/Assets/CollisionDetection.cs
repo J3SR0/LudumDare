@@ -30,7 +30,8 @@ public class CollisionDetection : MonoBehaviour {
 			Vector3 lPos = other.gameObject.transform.position;
 			lPos.y += 15;
 			other.gameObject.transform.position = lPos;
-			Debug.Log("Laser");
+			//Debug.Log("Laser");
+			playerScript.health -= 1;
 		}
 	}
 

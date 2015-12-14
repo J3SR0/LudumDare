@@ -16,6 +16,8 @@ public class Spawn : MonoBehaviour {
 	[SerializeField]
 	private GameObject laser;
 
+	private Game game;
+
 	private float nextSpawnTime, nextLaserTime;
 
 	private List<Item> listItems = new List<Item>();
@@ -23,6 +25,7 @@ public class Spawn : MonoBehaviour {
 	void Start () {
 		nextSpawnTime = spawnTime;
 		nextLaserTime = laser.GetComponent<Laser> ().CoolDown;
+		game = GetComponent<Game>();
 		laser.GetComponent<Laser> ().Target = GameObject.Find ("Cube");
 		GameObject item;
 		Item itemProperties;
@@ -35,6 +38,11 @@ public class Spawn : MonoBehaviour {
 	}
 		
 	void Update () {
+		if (!game.gameOver)
+			spawn();
+	}
+
+	private void spawn() {
 		float roll = Random.Range (0.01f, 1.0f);
 		if (Time.time >= nextSpawnTime) {
 			GameObject itemToSpawn = null;

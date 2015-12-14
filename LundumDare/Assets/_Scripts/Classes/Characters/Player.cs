@@ -12,10 +12,11 @@ public class Player : Character {
 	private float fallSpeed = 1;
 	private float fallMass = 15;
 	private float slideVelocity = 20;
-	private float growthRate = 5;
+	private float growthRate = 1;
 	private CollisionDetection collision;
 	private ChangeSize size;
 	private Timer time;
+	private Game game;
 
 	// Use this for initialization
 	public override void Start () {
@@ -29,8 +30,10 @@ public class Player : Character {
 
 	void FixedUpdate() {
 		groundCheck();
-		growOverTime();
-		Move();
+		if (!game.gameOver){
+			growOverTime();
+			Move();
+		}
 		//applyFall();
 	}
 
@@ -42,6 +45,7 @@ public class Player : Character {
 		this.speed = 120;
 		this.jumpHeight = 32;
 		this.input = this.transform.parent.parent.GetComponent<InputHandler>();
+		this.game = this.transform.parent.parent.GetComponent<Game>();
 	}
 
 	public void InitBody () {

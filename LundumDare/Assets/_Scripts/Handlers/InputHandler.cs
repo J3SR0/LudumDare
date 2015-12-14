@@ -7,7 +7,7 @@ public class InputHandler : MonoBehaviour {
 	public bool debug = true;
 
 	// Cooldowns
-	private float dashCD = 0.5f;
+	private float dashCD = 0.3f;
 
 	//Raw Input
 	public float h = 0;
