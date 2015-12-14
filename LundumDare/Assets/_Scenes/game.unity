@@ -412,7 +412,7 @@ MonoBehaviour:
   items:
   - {fileID: 163870, guid: 3b08055fa7e66f34495568fe15512a32, type: 2}
   spawnTime: 4
-  laser: {fileID: 170344, guid: 86b83a0cc38f6b44c98891ecee3bf103, type: 2}
+  laser: {fileID: 100940, guid: 86b83a0cc38f6b44c98891ecee3bf103, type: 2}
 --- !u!1 &1454938838
 GameObject:
   m_ObjectHideFlags: 0
