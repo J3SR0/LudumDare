@@ -56,6 +56,7 @@ public class Spawn : MonoBehaviour {
 		if (laser.GetComponent<Laser> ().Frequency >= roll && Time.timeSinceLevelLoad >= nextLaserTime) {
 			spawnGameObject (laser, new Vector2 (getSpawnPositionX (), 16f));
 			nextLaserTime = Time.timeSinceLevelLoad + laser.GetComponent<Laser> ().CoolDown;
+			laser.GetComponent<Laser> ().CoolDown -= laser.GetComponent<Laser> ().CoolDownReducer;
 		}
 	}
 
