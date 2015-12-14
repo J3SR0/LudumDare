@@ -24,23 +24,30 @@ public class Laser : MonoBehaviour {
 
 	public GameObject GameObject { get { return gameObject; } }
 
+	private bool shooting = false;
+
 	void Start () {
+		target =  GameObject.Find ("Cube");
 		timerBeforeShot += Time.time;
 	}
 		
 	void Update () {
 		float currentTime = Time.time;
-		if (currentTime >= timerBeforeShot) {
+		if (currentTime >= timerBeforeShot && !shooting)
 			Shoot ();
-			if (currentTime >= timerBeforeShot + 1f)
-				Destroy (gameObject);
-		}
-		else if (target != null)
+		else if (currentTime >= timerBeforeShot + 1f)
+			Destroy (gameObject);
+		else if (target != null && !shooting)
 			transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, transform.position.y), speed * Time.deltaTime);
 	}
 
 	private void Shoot() {
 		transform.localPosition = new Vector3(transform.localPosition.x, -19f, 0);
+		shooting = true;
+	}
+
+	public void setPositionY(float y) {
+		transform.localPosition = new Vector3 (transform.localPosition.x, y, 0);
 	}
 		
 }
