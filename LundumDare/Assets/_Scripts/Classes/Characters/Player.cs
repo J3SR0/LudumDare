@@ -114,15 +114,11 @@ public class Player : Character {
 		}
 	}
 
-	public override void Attack () {
-
-	}
-
 	public void dashHandler () {
 		bool Lcol = collision.LWCollision();
 		bool Rcol = collision.RWCollision();
 
-		if (input.dashLeft && !Lcol) {
+		if ((input.dashRight && !Lcol && reversed) || (input.dashLeft && !Lcol)) {
 			this.audio.PlayOneShot(dashSound, soundVolume);
 			Vector3 newPos = this.tr.position;
 			Vector3 newVel = this.rb.velocity;
@@ -138,7 +134,7 @@ public class Player : Character {
 				this.tr.position = newPos;
 			}
 		}
-		if (input.dashRight && !Rcol) {
+		if ((input.dashLeft && !Rcol && reversed) || (input.dashRight && !Rcol)) {
 			this.audio.PlayOneShot(dashSound, soundVolume);
 			Vector3 newPos = this.tr.position;
 			Vector3 newVel = this.rb.velocity;
@@ -247,13 +243,13 @@ public class Player : Character {
 
 	IEnumerator Slim() {
 		slimed = true;
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(3);
 		slimed = false;
 	}
 
 	IEnumerator Boost() {
 		boosted = true;
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(2);
 		boosted = false;
 	}
 
@@ -292,7 +288,7 @@ public class Player : Character {
 			if (boosted) {
 				slideVelocity = boostedSpeed;
 			}
-			else
+			else if (!slowed)
 				slideVelocity = savedVelocity;
 			yield return null;
 		}
@@ -301,12 +297,23 @@ public class Player : Character {
 	IEnumerator applySlim() {
 		while (!game.gameOver) {
 			Vector3 scale = tr.localScale;
+			Vector3 newPos;
 			if (slimed) {
 				scale.x = scale.y / 2;
 			}
-			else
+			else {
 				scale.x = scale.y;
+			}
 			tr.localScale = scale;
+			if (collision.LWCollision()) {
+				newPos = this.tr.position;
+				newPos.x = -30 + (this.tr.localScale.x / 2);
+				this.tr.position = newPos;
+			} else if (collision.RWCollision()) {
+				newPos = this.tr.position;
+				newPos.x = 30 - (this.tr.localScale.x / 2);
+				this.tr.position = newPos;
+			}
 			yield return null;
 		}
 	}
