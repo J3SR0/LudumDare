@@ -50,18 +50,18 @@ public class CollisionDetection : Utility {
 
 	void OnCollisionEnter(Collision col) {
 		if (col.gameObject.tag == "Seed") {
-			this.audio.PlayOneShot(pickupSound, 1F);
+			this.audio.PlayOneShot(pickupSound, soundVolume);
 			Destroy(col.gameObject);
 			rb.velocity = velSave;
 			size.shrink();
 		} else if (col.gameObject.tag == "Buff") {
-			this.audio.PlayOneShot(pickupSound, 1F);
+			this.audio.PlayOneShot(pickupSound, soundVolume);
 			Destroy(col.gameObject);
 			rb.velocity = velSave;
 			this.playerScript.buff ();
 			//Debug.Log("Buff");
 		} else if (col.gameObject.tag == "Debuff") {
-			this.audio.PlayOneShot(pickupSound, 1F);
+			this.audio.PlayOneShot(pickupSound, soundVolume);
 			Destroy(col.gameObject);
 			rb.velocity = velSave;
 			this.playerScript.debuff ();

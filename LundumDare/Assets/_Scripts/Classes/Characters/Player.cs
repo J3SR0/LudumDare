@@ -114,7 +114,7 @@ public class Player : Character {
 		bool Rcol = collision.RWCollision();
 
 		if (input.dashLeft && !Lcol) {
-			this.audio.PlayOneShot(dashSound, 1F);
+			this.audio.PlayOneShot(dashSound, soundVolume);
 			Vector3 newPos = this.tr.position;
 			Vector3 newVel = this.rb.velocity;
 
@@ -130,7 +130,7 @@ public class Player : Character {
 			}
 		}
 		if (input.dashRight && !Rcol) {
-			this.audio.PlayOneShot(dashSound, 1F);
+			this.audio.PlayOneShot(dashSound, soundVolume);
 			Vector3 newPos = this.tr.position;
 			Vector3 newVel = this.rb.velocity;
 
@@ -197,7 +197,7 @@ public class Player : Character {
 
 	public void hit() {
 		this.health -= 1;
-		this.audio.PlayOneShot(hitSound, 1F);
+		this.audio.PlayOneShot(hitSound, soundVolume);
 	}
 
 	private void slide(bool status) {

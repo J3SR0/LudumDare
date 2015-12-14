@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Utility : MonoBehaviour {
 
+	protected float soundVolume = 0.03f;
+
 	public bool blink (GameObject gameObjectToBlink = null, float showTime = 1f, float showTimeReduction = 0.01f, float hideTime = 1f, float hideTimeReduction = 0.01f, float timer = 0f) {
 		if (gameObjectToBlink != null) {
 			StartCoroutine (blinking (gameObjectToBlink, showTime, showTimeReduction, hideTime, hideTimeReduction, timer));

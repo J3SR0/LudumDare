@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Game : MonoBehaviour {
+public class Game : Utility {
 
 	Timer time;
 	Player player;
@@ -9,6 +9,8 @@ public class Game : MonoBehaviour {
 	public bool restart;
 
 	public string Score;
+
+	public AudioSource audioSource;
 
 	public GUIText ScoreText;
 	public GUIText RestartText;
@@ -22,6 +24,7 @@ public class Game : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+		audioSource.volume = soundVolume;
 		gameOver = false;
 		restart = false;
 		time = GetComponent<Timer>();
