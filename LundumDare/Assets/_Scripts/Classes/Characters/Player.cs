@@ -26,10 +26,12 @@ public class Player : Character {
 	public AudioClip hitSound;
 
 	private string[] debuffPool = new string[2]{"Slow", "Reversed"};
+	private string[] buffPool = new string[3]{"Boost", "Life", "Invincible"};
 
 	private bool slowed = false;
 	private bool reversed = false;
 	private bool boosted = false;
+	private bool invincible = false;
 
 	void Awake () {
 		Init();
@@ -41,6 +43,7 @@ public class Player : Character {
 		//debuffPool[1] = "Reversed";
 		StartCoroutine(applySlow());
 		StartCoroutine(applyReversed());
+		StartCoroutine(applyBoost());
 	}
 	
 	// Update is called once per frame
@@ -200,8 +203,10 @@ public class Player : Character {
 	}
 
 	public void hit() {
-		this.health -= 1;
-		this.audio.PlayOneShot(hitSound, soundVolume);
+		if (!invincible) {
+			this.health -= 1;
+			this.audio.PlayOneShot(hitSound, soundVolume);
+		}
 	}
 
 	private void slide(bool status) {
@@ -213,12 +218,14 @@ public class Player : Character {
 	}
 
 	public void buff () {
-		if (this.health < 3)
-			this.health += 1;
+		float rawRoll = Random.Range(0f, 2f);
+		int roll = (int) Mathf.Round(rawRoll);
+		string res = buffPool[roll];
+		StartCoroutine(res);
 	}
 
 	public void debuff () {
-		float rawRoll = Random.Range(0f, 2f);
+		float rawRoll = Random.Range(0f, 1f);
 		int roll = (int) Mathf.Round(rawRoll);
 		string res = debuffPool[roll];
 		StartCoroutine(res);
@@ -234,6 +241,25 @@ public class Player : Character {
 		reversed = true;
 		yield return new WaitForSeconds(1);
 		reversed = false;
+	}
+
+	IEnumerator Life() {
+		if (health < 3) {
+			++health;
+		}
+		yield return null;
+	}
+
+	IEnumerator Boost() {
+		boosted = true;
+		yield return new WaitForSeconds(1);
+		boosted = false;
+	}
+
+	IEnumerator Invincible() {
+		invincible = true;
+		yield return new WaitForSeconds(1);
+		invincible = false;
 	}
 
 	IEnumerator applyReversed() {
@@ -258,6 +284,19 @@ public class Player : Character {
 		}
 	}
 
+	IEnumerator applyBoost() {
+		float savedVelocity = slideVelocity;
+		float boostedSpeed = slideVelocity * 2;
+		while (!game.gameOver) {
+			if (boosted) {
+				slideVelocity = boostedSpeed;
+			}
+			else
+				slideVelocity = savedVelocity;
+			yield return null;
+		}
+	}
+
 	void OnGUI () {
         GUIStyle myStyle = new GUIStyle(GUI.skin.GetStyle("button"));
         myStyle.fontSize = 32;
@@ -266,10 +305,16 @@ public class Player : Character {
         GUIStyle myStyle1 = new GUIStyle(GUI.skin.GetStyle("button"));
 
 		if (slowed && !game.gameOver) {
-			GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 20, 200, 50),  "S L O W E D", myStyle);
+			GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 20, 200, 50),  "S L O W E D", myStyle);
 		}
 		if (reversed && !game.gameOver) {
-			GUI.Button(new Rect(Screen.width / 2 - 125, Screen.height / 2 + 40, 250, 50),  "R E V E R S E D", myStyle);
+			GUI.Button(new Rect(Screen.width / 2 - 125, Screen.height / 2 - 80, 250, 50),  "R E V E R S E D", myStyle);
+		}
+		if (boosted && !game.gameOver) {
+			GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 20, 200, 50),  "B O O S T", myStyle);
+		}
+		if (invincible && !game.gameOver) {
+			GUI.Button(new Rect(Screen.width / 2 - 150, Screen.height / 2 + 80, 300, 50),  "I N V I N C I B L E", myStyle);
 		}
 	}
 }

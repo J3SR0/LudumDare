@@ -7,10 +7,14 @@ public class ChangeSize : MonoBehaviour {
 	private Transform tr;
 	private float minSize = 1;
 
-	// Use this for initialization
-	void Start () {
+	void Awake () {
 		tr = GetComponent<Transform>();
 		collision = GetComponent<CollisionDetection>();
+		Debug.Log("Here");
+	}
+
+	// Use this for initialization
+	void Start () {
 	}
 	
 	// Update is called once per frame

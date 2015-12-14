@@ -18,13 +18,16 @@ public class CollisionDetection : Utility {
 	private AudioSource audio;
 	public AudioClip pickupSound;
 
-	// Use this for initialization
-	void Start () {
+	void Awake () {
 		playerScript = this.transform.parent.GetComponent<Player>();
 		size = GetComponent<ChangeSize>();
 		rb = GetComponent<Rigidbody>();
 		tr = GetComponent<Transform>();
 		this.audio = GetComponent<AudioSource>();
+	}
+
+	// Use this for initialization
+	void Start () {
 	}
 	
 	// Update is called once per frame
